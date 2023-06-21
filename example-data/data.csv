@@ -1,0 +1,7 @@
+object_id,schema_table_name_src,database_src,database_trg,schema_name_src,schema_name_trg,table_name,column_ordinal,column_name,data_type_description_src,key_to_whole_number,data_type_src,length_src,precision_src,scale_src,is_nullable_src,is_PK,pk_column_ordinal
+1,[KEBOOLA_123-out_c-bucket].[column_x1],kbc-db-synapse-xx,KEBOOLA_123,"KEBOOLA_123-out_c-bucket""",out.c-bucket,bucket,7,column_x1,varchar(19),0,varchar,19,0,0,0,0,0
+2,[KEBOOLA_123-out_c-bucket].[column_x2],"kbc-db-synapse-xx",KEBOOLA_123,"KEBOOLA_123-out_c-bucket""",out.c-bucket,bucket,"1",column_x2,"nvarchar(0)","0","nvarchar","-1","0","0","1","0","0"
+3,[KEBOOLA_123-out_c-bucket].[column_x3],"kbc-db-synapse-xx",KEBOOLA_123,"KEBOOLA_123-out_c-bucket""",out.c-bucket,bucket,"2",column_x3,"datetime","0","datetime","8","23","3","1","0","0"
+4,[KEBOOLA_123-out_c-bucket].[column_x4],"kbc-db-synapse-xx",KEBOOLA_123,"KEBOOLA_123-out_c-bucket""",out.c-bucket,bucket,"2",column_x4,"datetime2(7)","0","datetime2","8","27","7","1","0","0"
+100,[KEBOOLA_123-out_c-bucket].[column_x5],"kbc-db-synapse-xx",KEBOOLA_123,KEBOOLA_123-out_c-bucket","out.c-bucket",bucket,"9",column_x5,"datetime2(0)","0","datetime2","6","19","0","1","0","0"
+

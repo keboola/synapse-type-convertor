@@ -1,0 +1,16 @@
+{
+    "name": "keboola/synapse-types-to-basetypes",
+    "type": "project",
+    "description": "Converting Synapsedata types to Snowflake types",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Keboola\\SynapseTypesToBasetypes\\": "src/"
+        }
+    },
+    "require": {
+        "keboola/php-datatypes": "^7.0",
+        "keboola/csv": "*",
+        "symfony/filesystem": "^6.3"
+    }
+}
