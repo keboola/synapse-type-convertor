@@ -99,18 +99,25 @@ class RowConverter
                 return new Snowflake(Snowflake::TYPE_VARCHAR, ['length' => $this->length]);
             },
             //float -> float or whole number
-            Synapse::TYPE_FLOAT => function () {
+            Synapse::TYPE_FLOAT, Synapse::TYPE_REAL => function () {
                 if ($this->toWholeNumber) {
                     return new Snowflake(
                         Snowflake::TYPE_NUMBER, [
                             'length' => [
                                 'numeric_precision' => '38',
-                                'numeric_scale' => '18'
+                                'numeric_scale' => '0'
                             ]
                         ]
                     );
                 } else {
-                    return new Snowflake(Snowflake::TYPE_FLOAT);
+                    return new Snowflake(
+                        Snowflake::TYPE_NUMBER, [
+                            'length' => [
+                                'numeric_precision' => 38,
+                                'numeric_scale' => 18
+                            ]
+                        ]
+                    );
                 }
             },
             //numeric
@@ -139,6 +146,30 @@ class RowConverter
             Synapse::TYPE_BINARY => function () {
                 return new Snowflake(Snowflake::TYPE_BINARY);
             },
+            Synapse::TYPE_MONEY => function () {
+                return new Snowflake(
+                    Snowflake::TYPE_NUMBER, [
+                        'length' => [
+                            'numeric_precision' =>  19,
+                            'numeric_scale' => 4
+                        ]
+                    ]
+                );
+            },
+            Synapse::TYPE_TIME => function () {
+                return new Snowflake(Snowflake::TYPE_TIME);
+            },
+            Synapse::TYPE_INT, Synapse::TYPE_BIGINT, Synapse::TYPE_SMALLINT, Synapse::TYPE_TINYINT => function () {
+                return new Snowflake(
+                    Snowflake::TYPE_NUMBER, [
+                        'length' => [
+                            'numeric_precision' => 38,
+                            'numeric_scale' => 0
+                        ]
+                    ]
+                );
+            }
+            ,
             default => function () {
                 return new Snowflake($this->synapseDatatype->getBasetype());
             }
