@@ -93,7 +93,7 @@ class RowConverter
             },
             //NVARCHAR -> VARCHAR(n) or VARCHAR(MAX)
             Synapse::TYPE_VARCHAR => function () {
-                if ($this->length <= 1) {
+                if ($this->length < 1) {
                     return new Snowflake(Snowflake::TYPE_VARCHAR);
                 }
                 return new Snowflake(Snowflake::TYPE_VARCHAR, ['length' => $this->length]);
@@ -133,6 +133,9 @@ class RowConverter
             },
             //datatimes
             Synapse::TYPE_DATETIME, Synapse::TYPE_DATETIME2 => function () {
+                if ($this->scale == 0) {
+                    return new Snowflake(Snowflake::TYPE_DATETIME);
+                }
                 return new Snowflake(Snowflake::TYPE_DATETIME, ['length' => $this->scale]);
             }
             ,
